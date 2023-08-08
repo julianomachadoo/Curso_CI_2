@@ -19,4 +19,12 @@ jobs:
         username: julianomachadoo
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3.0.0
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: julianomachadoo/go_ci:${{github.ref_name}}
+
 
